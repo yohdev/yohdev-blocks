@@ -1,0 +1,1 @@
+{"version":3,"file":"button.css","mappings":";;;AAAA;;;;EAAA,C","sources":["webpack://yohdev-blocks/./includes/block-editor/blocks/button/editor.scss"],"sourcesContent":["/**\n * The following styles get applied inside the editor only.\n *\n * Replace them with your own styles or remove the file completely.\n */\n\n .wp-block-yohdev-button{\n\t\n}\n"],"names":[],"sourceRoot":""}

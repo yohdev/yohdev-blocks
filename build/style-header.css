@@ -1,0 +1,43 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./includes/block-editor/blocks/header/style.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.editor-styles-wrapper .wp-block {
+  max-width: 1400px !important;
+}
+.editor-styles-wrapper .yohdev-card {
+  background-color: #fafcff;
+  padding: 25px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 8px;
+}
+.editor-styles-wrapper .yohdev-card img {
+  width: 100%;
+}
+
+.wp-block-yohdev-header {
+  padding: 30px 0;
+}
+.wp-block-yohdev-header .content-container {
+  display: flex;
+  align-items: baseline;
+}
+.wp-block-yohdev-header .content-container .yohdev-heading {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+.wp-block-yohdev-header .content-container .cool-dot {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+/*# sourceMappingURL=style-header.css.map*/

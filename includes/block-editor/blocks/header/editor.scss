@@ -1,0 +1,29 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+@import "../../../base/_base";
+.wp-block-yohdev-header {
+    .yohdev-heading-container {
+        padding: 30px 0;
+
+        .content-container {
+          display: flex;
+          align-items: baseline;
+          .yohdev-heading {
+            font-family: $main-font;
+            font-weight: 700;
+          }
+
+          .cool-dot {
+            display: block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-left: 10px;
+          }
+        }
+    }
+}

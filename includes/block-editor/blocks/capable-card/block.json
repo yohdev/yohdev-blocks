@@ -1,0 +1,54 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/capable-card",
+	"version": "0.1.0",
+	"title": "Gutenburg - Capable Card",
+	"category": "yohdev-blocks-category",
+	"description": "Custom YohDev Capability Card",
+	"icon": "format-image",
+	"attributes":{
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h3"
+		  },
+	  
+		  "titleColor": {
+			"type": "string",
+			"default": "white"
+		  },
+	  
+		  "titleSize": {
+			"type": "number",
+			"default": 25
+		  },
+	  
+		  "body": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		  },
+	  
+		  "bodyColor": {
+			"type": "string",
+			"default": "white"
+		  },
+	  
+		  "backgroundColor": {
+			"type": "string",
+			"default": "black"
+		  },
+	  
+		  "borderColor": {
+			"type": "string",
+			"default": "#9185de"
+		  }
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/capable-card.js",
+	"editorStyle": "file:../../../../build/capable-card.css",
+	"style": "file:../../../../build/style-capable-card.css"
+}

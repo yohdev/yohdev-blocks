@@ -1,0 +1,16 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/block-two",
+	"version": "0.1.0",
+	"title": "Block Two Title",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Description",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/block-two.js",
+	"editorStyle": "file:../../../../build/block-two.css",
+	"style": "file:../../../../build/style-block-two.css"
+}

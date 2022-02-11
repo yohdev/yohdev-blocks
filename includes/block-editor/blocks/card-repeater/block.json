@@ -1,0 +1,52 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/card-repeater",
+	"version": "0.1.0",
+	"title": "Gutenburg - Card Repeater Section",
+	"category": "yohdev-blocks-category",
+	"description": "Section that allows you to repeat cards in a grid layout",
+	"icon": "format-image",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1"
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"titleSize": {
+			"type": "number",
+			"default": 65
+		},
+		"body": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"bodyColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"overlayColor": {
+			"type": "string",
+			"default": "none"
+		},
+		"radio": {
+			"type": "string",
+			"default": "3X1"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/card-repeater.js",
+	"editorStyle": "file:../../../../build/card-repeater.css",
+	"style": "file:../../../../build/style-card-repeater.css"
+}

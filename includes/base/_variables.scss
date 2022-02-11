@@ -1,0 +1,71 @@
+// Breakpoints
+// Matches: https://getbootstrap.com/docs/4.4/layout/overview/#responsive-breakpoints
+// Intended to be used with min-width media queries for a mobile first approach
+//
+// These are also used in the media query
+// ----------------------------------------------------------------------------
+
+// Small devices (landscape phones, 576px and up)
+$screen-sm: 576px;
+
+// Medium devices (tablets, 768px and up)
+$screen-md: 768px;
+
+// Large devices (desktops, 992px and up)
+$screen-lg: 992px;
+
+// Extra large devices (large desktops, 1200px and up)
+$screen-xl: 1200px;
+
+//Fonts
+$main-font: 'Poppins', sans-serif;
+$body-font: 'Work Sans', sans-serif;
+
+$primary-font: 'Poppins', sans-serif;;
+$secondary-font: 'Work Sans', sans-serif;
+$secondary-font-bold: 'Work Sans', sans-serif;
+$notation-font: 'Roboto', sans-serif;
+
+// Colors
+// These are just some placeholder colors, change to client colors
+// ----------------------------------------------------------------------------
+
+$primary-var: #9185de;
+$primary-800: #18152e;
+$primary-700: #2c2655;
+$primary-400: #7c7798;
+$primary-200: #d3cef5;
+
+//Theme Colors
+$primary: #39306F;
+$secondary: #10D1D3;
+$success: #10D1D3;
+$info: #9185DE;
+$warning: #D2D36F;
+$danger: #F46254;
+$light: #F7F7F7;
+$dark: #000000;
+
+//Neutrals
+$black: #000000;
+$white: #ffffff;
+$white-2: #fafafa;
+$gray: #aaaaaa;
+$gray-2: #d9e1eb43;
+$light-gray: #f4f4f4;
+$text-gray: #7f7e7c;
+$text-gray-2: #707479;
+$bg-grey: #f0f0f0;
+
+$cta-secondary: $secondary;
+
+//Buttons
+$button-primary: $primary;
+$button-secondary: $white;
+
+
+$text-link-primary-disabled: #b28c8c;
+$text-link-secondary-disabled: #a5b6cc;
+
+//Shadow
+$shadow: 0px 3px 6px #00000029;

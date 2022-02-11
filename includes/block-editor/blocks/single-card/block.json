@@ -1,0 +1,52 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/single-card",
+	"version": "0.1.0",
+	"title": "Gutenburg - Single Card",
+	"category": "yohdev-blocks-category",
+	"description": "Single Repeatable Card",
+	"icon": "format-image",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h2"
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"body": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"bodyColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"featImage": {
+			"type": "string",
+			"default": null
+		},
+		"radio": {
+			"type": "string",
+			"default": "hide"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": "white"
+		},
+		"alignment": {
+			"type": "string",
+			"default": "none"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/single-card.js",
+	"editorStyle": "file:../../../../build/single-card.css",
+	"style": "file:../../../../build/style-single-card.css"
+}

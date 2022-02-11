@@ -1,0 +1,47 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/image-with-text",
+	"version": "0.1.0",
+	"title": "Gutenburg - Image With Text",
+	"category": "yohdev-blocks-category",
+	"description": "Custom YohDev Image With Text",
+	"icon": "format-image",
+	"attributes":{
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1"
+		  },
+		  "titleColor": {
+			"type": "string",
+			"default": "black"
+		  },
+		  "titleSize": {
+			"type": "number",
+			"default": 65
+		  },
+		  "columns": {
+			"type": "number",
+			"default": 2
+		  },
+		  "backgroundImage": {
+			"type": "string",
+			"default": null
+		  },
+		  "overlayColor": {
+			"type": "string",
+			"default": "black"
+		  },
+		  "overlayOpacity": {
+			"type": "number",
+			"default": 0.3
+		  }
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/image-with-text.js",
+	"editorStyle": "file:../../../../build/image-with-text.css",
+	"style": "file:../../../../build/style-image-with-text.css"
+}

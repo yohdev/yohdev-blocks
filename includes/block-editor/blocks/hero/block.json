@@ -1,0 +1,52 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/hero",
+	"version": "0.1.0",
+	"title": "Gutenburg - Hero",
+	"category": "yohdev-blocks-category",
+	"description": "Custom YohDev Hero",
+	"icon": "format-image",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h2"
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"body": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"bodyColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"backgroundImage": {
+			"type": "string",
+			"default": null
+		},
+		"overlayColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"overlayOpacity": {
+			"type": "number",
+			"default": 0.3
+		},
+		"radio": {
+			"type": "string",
+			"default": "default"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/hero.js",
+	"editorStyle": "file:../../../../build/hero.css",
+	"style": "file:../../../../build/style-hero.css"
+}

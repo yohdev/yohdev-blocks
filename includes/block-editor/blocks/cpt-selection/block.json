@@ -1,0 +1,44 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/cpt-selection",
+	"version": "0.1.0",
+	"title": "Gutenburg - CPT Selection Block",
+	"category": "yohdev-blocks-category",
+	"description": "Custom Post Type Selection",
+	"icon": "format-image",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1"
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"titleSize": {
+			"type": "number",
+			"default": 65
+		},
+		"body": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": "none"
+		},
+		"radio": {
+			"type": "string",
+			"default": "default"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/cpt-selection.js",
+	"editorStyle": "file:../../../../build/cpt-selection.css",
+	"style": "file:../../../../build/style-cpt-selection.css"
+}

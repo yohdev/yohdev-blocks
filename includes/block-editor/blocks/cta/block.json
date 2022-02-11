@@ -1,0 +1,44 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/cta",
+	"version": "0.1.0",
+	"title": "Gutenburg - CTA",
+	"category": "yohdev-blocks-category",
+	"description": "Custom YohDev CTA",
+	"icon": "format-image",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1"
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"titleSize": {
+			"type": "number",
+			"default": 65
+		},
+		"body": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"default": "none"
+		},
+		"alignment": {
+			"type": "string",
+			"default": "center"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/cta.js",
+	"editorStyle": "file:../../../../build/cta.css",
+	"style": "file:../../../../build/style-cta.css"
+}

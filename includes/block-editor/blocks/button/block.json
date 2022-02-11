@@ -1,0 +1,42 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/button",
+	"version": "0.1.0",
+	"title": "Gutenburg - Button",
+	"category": "yohdev-blocks-category",
+	"icon": "format-image",
+	"description": "Description",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "title"
+		},
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "a",
+			"attribute": "href"
+		},
+		"text": {
+			"type": "array",
+			"source": "children",
+			"selector": "a"
+		},
+		"className": {
+			"type": "string"
+		},
+		"radio": {
+			"type": "string",
+			"default": "default"
+		}
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/button.js",
+	"editorStyle": "file:../../../../build/button.css",
+	"style": "file:../../../../build/style-button.css"
+}

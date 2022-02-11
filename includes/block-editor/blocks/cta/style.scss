@@ -1,0 +1,21 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ @import '../../../base/_base';
+
+ .wp-block-yohdev-cta{
+    .yohdev-cta {
+        min-height: 450px;
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+      
+        .cta-body {
+          margin: 20px 0;
+        }
+      }
+}

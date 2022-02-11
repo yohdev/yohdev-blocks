@@ -1,0 +1,39 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/header",
+	"version": "0.1.0",
+	"title": "Gutenburg - Header",
+	"category": "yohdev-blocks-category",
+	"description": "Custom YohDev Header",
+	"icon": "format-image",
+	"attributes":{
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1"
+		  },
+		  "titleColor": {
+			"type": "string",
+			"default": "black"
+		  },
+		  "titleSize": {
+			"type": "number",
+			"default": 65
+		  },
+		  "dotColor": {
+			"type": "string",
+			"default": "#9185de"
+		  },
+		  "alignment": {
+			"type": "string",
+			"default": "none"
+		  }
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/header.js",
+	"editorStyle": "file:../../../../build/header.css",
+	"style": "file:../../../../build/style-header.css"
+}

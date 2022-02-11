@@ -1,0 +1,52 @@
+{
+	"apiVersion": 2,
+	"name": "yohdev/repeater-card",
+	"version": "0.1.0",
+	"title": "Gutenburg - Repeater Card",
+	"category": "yohdev-blocks-category",
+	"description": "Custom YohDev Card Repeater",
+	"icon": "format-image",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h1"
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"titleSize": {
+			"type": "number",
+			"default": 65
+		},
+		"body": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"bodyColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"overlayColor": {
+			"type": "string",
+			"default": "none"
+		},
+		"radio": {
+			"type": "string",
+			"default": "3X1"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "yohdev",
+	"editorScript": "file:../../../../build/repeater-card.js",
+	"editorStyle": "file:../../../../build/repeater-card.css",
+	"style": "file:../../../../build/style-repeater-card.css"
+}
