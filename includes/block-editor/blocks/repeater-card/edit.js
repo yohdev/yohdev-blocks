@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -16,11 +16,11 @@ import {
 	InspectorControls,
 	ColorPalette,
 	InnerBlocks,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
-import { PanelBody, RangeControl, RadioControl } from "@wordpress/components";
+import { PanelBody, RangeControl, RadioControl } from '@wordpress/components';
 
-import { addFilter } from "@wordpress/hooks";
+import { addFilter } from '@wordpress/hooks';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -28,7 +28,7 @@ import { addFilter } from "@wordpress/hooks";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -39,137 +39,143 @@ import "./editor.scss";
  */
 
 const ALLOWED_BLOCKS = [
-	"core/columns",
-	"core/column",
-	"core/heading",
-	"core/paragraph",
-	"core/button",
-	"core/image",
-	"yohdev/header",
+	'core/columns',
+	'core/column',
+	'core/heading',
+	'core/paragraph',
+	'core/button',
+	'core/image',
+	'yohdev/header',
 ];
 
 const THREEBYONE_TEMPLATE = [
 	[
-		"core/columns",
-		{ className: "repeater-container" },
+		'core/columns',
+		{ className: 'repeater-container' },
 		[
-			["core/column", {}],
-			["core/column", {}],
-			["core/column", {}],
+			[ 'core/column', {} ],
+			[ 'core/column', {} ],
+			[ 'core/column', {} ],
 		],
 	],
 ];
 
 const THREE_BY_TWO_TEMPLATE = [
 	[
-		"core/columns",
-		{ columns: 2, className: "repeater-container" },
+		'core/columns',
+		{ columns: 2, className: 'repeater-container' },
 		[
-			["core/column", {}],
-			["core/column", {}],
-			["core/column", {}],
+			[ 'core/column', {} ],
+			[ 'core/column', {} ],
+			[ 'core/column', {} ],
 		],
 	],
 	[
-		"core/columns",
+		'core/columns',
 		{ columns: 2 },
 		[
-			["core/column", {}],
-			["core/column", {}],
-			["core/column", {}],
+			[ 'core/column', {} ],
+			[ 'core/column', {} ],
+			[ 'core/column', {} ],
 		],
 	],
 ];
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const { titleColor, columns, bodyColor, overlayColor, radio } = attributes;
 	// Custom Functions
 
-	function onChangeHeading(newTitle) {
-		setAttributes({ title: newTitle });
+	function onChangeHeading( newTitle ) {
+		setAttributes( { title: newTitle } );
 	}
 
-	function onTitleColorChange(newColor) {
-		setAttributes({ titleColor: newColor });
+	function onTitleColorChange( newColor ) {
+		setAttributes( { titleColor: newColor } );
 	}
 
-	function onChangeBody(newBody) {
-		setAttributes({ body: newBody });
+	function onChangeBody( newBody ) {
+		setAttributes( { body: newBody } );
 	}
 
-	function onBodyColorChange(newColor) {
-		setAttributes({ bodyColor: newColor });
+	function onBodyColorChange( newColor ) {
+		setAttributes( { bodyColor: newColor } );
 	}
 
-	function onOverlayColorChange(newColor) {
-		setAttributes({ overlayColor: newColor });
+	function onOverlayColorChange( newColor ) {
+		setAttributes( { overlayColor: newColor } );
 	}
 
 	return (
-		<section {...useBlockProps()}>
+		<section { ...useBlockProps() }>
 			{
-				<InspectorControls style={{ marginBottom: "40px" }}>
-					<PanelBody title={"Background Options"}>
-						<div style={{ marginBottom: "40px" }}>
+				<InspectorControls style={ { marginBottom: '40px' } }>
+					<PanelBody title={ 'Background Options' }>
+						<div style={ { marginBottom: '40px' } }>
 							<p>
 								<strong>Background Color:</strong>
 								<ColorPalette
-									value={overlayColor}
-									onChange={onOverlayColorChange}
+									value={ overlayColor }
+									onChange={ onOverlayColorChange }
 								/>
 							</p>
 						</div>
 					</PanelBody>
-					<PanelBody title={"Grid Layout Selection"}>
+					<PanelBody title={ 'Grid Layout Selection' }>
 						<div
-							style={{
-								marginTop: "20px",
-								marginBottom: "40px",
-							}}
+							style={ {
+								marginTop: '20px',
+								marginBottom: '40px',
+							} }
 						>
 							<p>
 								<strong>Select a Grid Layout:</strong>
 								<RadioControl
 									help="Choose which type of grid you want to display cards."
-									selected={radio}
-									options={[
-										{ label: "3X1", value: "3X1" },
-										{ label: "3X2", value: "3X2" },
-									]}
-									onChange={(option) => {
-										setAttributes({ radio: option });
-									}}
+									selected={ radio }
+									options={ [
+										{ label: '3X1', value: '3X1' },
+										{ label: '3X2', value: '3X2' },
+									] }
+									onChange={ ( option ) => {
+										setAttributes( { radio: option } );
+									} }
 								/>
 							</p>
 						</div>
 					</PanelBody>
-					<PanelBody title={"Font Color Settings"}>
+					<PanelBody title={ 'Font Color Settings' }>
 						<p>
 							<strong>Select a Title Color:</strong>
 						</p>
-						<ColorPalette value={titleColor} onChange={onTitleColorChange} />
+						<ColorPalette
+							value={ titleColor }
+							onChange={ onTitleColorChange }
+						/>
 						<p>
 							<strong>Select a Body Color:</strong>
 						</p>
-						<ColorPalette value={bodyColor} onChange={onBodyColorChange} />
+						<ColorPalette
+							value={ bodyColor }
+							onChange={ onBodyColorChange }
+						/>
 					</PanelBody>
 				</InspectorControls>
 			}
 			<div
 				className="card-repeater"
-				style={{ backgroundColor: `${overlayColor}` }}
+				style={ { backgroundColor: `${ overlayColor }` } }
 			>
-				{radio && radio === "3X1" && (
+				{ radio && radio === '3X1' && (
 					<div className="container">
-						<InnerBlocks template={THREEBYONE_TEMPLATE} />
+						<InnerBlocks template={ THREEBYONE_TEMPLATE } />
 					</div>
-				)}
+				) }
 
-				{radio && radio === "3X2" && (
+				{ radio && radio === '3X2' && (
 					<div className="container">
-						<InnerBlocks template={THREE_BY_TWO_TEMPLATE} />
+						<InnerBlocks template={ THREE_BY_TWO_TEMPLATE } />
 					</div>
-				)}
+				) }
 			</div>
 		</section>
 	);

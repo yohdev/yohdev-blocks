@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,11 +22,16 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
-export default function save({ attributes }) {
+export default function save( { attributes } ) {
 	const { title, radio, url, text, className } = attributes;
 	return (
-		<section {...useBlockProps.save()}>
-			<RichText.Content tagName="a" value={title} href={url} text={text} />
+		<section { ...useBlockProps.save() }>
+			<RichText.Content
+				tagName="a"
+				value={ title }
+				href={ url }
+				text={ text }
+			/>
 		</section>
 	);
 }

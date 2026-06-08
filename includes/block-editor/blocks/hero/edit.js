@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -18,16 +18,16 @@ import {
 	ColorPalette,
 	MediaUpload,
 	InnerBlocks,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
 import {
 	PanelBody,
-	IconButton,
+	Button,
 	RangeControl,
 	RadioControl,
-} from "@wordpress/components";
+} from '@wordpress/components';
 
-import { addFilter } from "@wordpress/hooks";
+import { addFilter } from '@wordpress/hooks';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -35,7 +35,7 @@ import { addFilter } from "@wordpress/hooks";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -46,39 +46,39 @@ import "./editor.scss";
  */
 
 const ALLOWED_BLOCKS = [
-	"core/button",
-	"core/heading",
-	"core/paragraph",
-	"yohdev/gutenberg-header",
+	'core/button',
+	'core/heading',
+	'core/paragraph',
+	'yohdev/gutenberg-header',
 ];
 
 const MAIN_HERO_TEMPLATE = [
 	[
-		"core/columns",
+		'core/columns',
 		{ columns: 2 },
 		[
 			[
-				"core/column",
+				'core/column',
 				{
 					className: false,
 					placeholder:
-						"This is a spacer block to put content on left or right side.",
+						'This is a spacer block to put content on left or right side.',
 				},
 			],
 			[
-				"core/column",
-				{ className: "content" },
+				'core/column',
+				{ className: 'content' },
 				[
-					["core/heading", { placeholder: "Enter heading..." }],
-					["core/paragraph", { placeholder: "Enter body..." }],
-					["core/button", { align: "left" }],
+					[ 'core/heading', { placeholder: 'Enter heading...' } ],
+					[ 'core/paragraph', { placeholder: 'Enter body...' } ],
+					[ 'core/button', { align: 'left' } ],
 				],
 			],
 		],
 	],
 ];
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const {
 		title,
 		body,
@@ -91,155 +91,161 @@ export default function Edit({ attributes, setAttributes }) {
 	} = attributes;
 	// Custom Functions
 
-	function onChangeHeading(newTitle) {
-		setAttributes({ title: newTitle });
+	function onChangeHeading( newTitle ) {
+		setAttributes( { title: newTitle } );
 	}
 
-	function onTitleColorChange(newColor) {
-		setAttributes({ titleColor: newColor });
+	function onTitleColorChange( newColor ) {
+		setAttributes( { titleColor: newColor } );
 	}
 
-	function onChangeBody(newBody) {
-		setAttributes({ body: newBody });
+	function onChangeBody( newBody ) {
+		setAttributes( { body: newBody } );
 	}
 
-	function onBodyColorChange(newColor) {
-		setAttributes({ bodyColor: newColor });
+	function onBodyColorChange( newColor ) {
+		setAttributes( { bodyColor: newColor } );
 	}
 
-	function onSelectImage(newImage) {
-		setAttributes({ backgroundImage: newImage.sizes.full.url });
+	function onSelectImage( newImage ) {
+		setAttributes( { backgroundImage: newImage.sizes.full.url } );
 	}
 
-	function onOverlayColorChange(newColor) {
-		setAttributes({ overlayColor: newColor });
+	function onOverlayColorChange( newColor ) {
+		setAttributes( { overlayColor: newColor } );
 	}
 
-	function onOverlayOpacityChange(newOpacity) {
-		setAttributes({ overlayOpacity: newOpacity });
+	function onOverlayOpacityChange( newOpacity ) {
+		setAttributes( { overlayOpacity: newOpacity } );
 	}
 
 	return (
-		<section {...useBlockProps()}>
+		<section { ...useBlockProps() }>
 			{
-				<InspectorControls style={{ marginBottom: "40px" }}>
-					<PanelBody title={"Post Type Selection"}>
+				<InspectorControls style={ { marginBottom: '40px' } }>
+					<PanelBody title={ 'Post Type Selection' }>
 						<div
-							style={{
-								marginTop: "20px",
-								marginBottom: "40px",
-							}}
+							style={ {
+								marginTop: '20px',
+								marginBottom: '40px',
+							} }
 						>
 							<p>
 								<strong>Select a Hero Type:</strong>
 								<RadioControl
 									help="Choose which type of hero you want to show."
-									selected={radio}
-									options={[
-										{ label: "Default", value: "default" },
-										{ label: "Inner", value: "inner" },
-									]}
-									onChange={(option) => {
-										setAttributes({ radio: option });
-									}}
+									selected={ radio }
+									options={ [
+										{ label: 'Default', value: 'default' },
+										{ label: 'Inner', value: 'inner' },
+									] }
+									onChange={ ( option ) => {
+										setAttributes( { radio: option } );
+									} }
 								/>
 							</p>
 						</div>
 					</PanelBody>
-					<PanelBody title={"Font Color Settings"}>
+					<PanelBody title={ 'Font Color Settings' }>
 						<p>
 							<strong>Select a Title Color:</strong>
 						</p>
-						<ColorPalette value={titleColor} onChange={onTitleColorChange} />
+						<ColorPalette
+							value={ titleColor }
+							onChange={ onTitleColorChange }
+						/>
 						<p>
 							<strong>Select a Body Color:</strong>
 						</p>
-						<ColorPalette value={bodyColor} onChange={onBodyColorChange} />
+						<ColorPalette
+							value={ bodyColor }
+							onChange={ onBodyColorChange }
+						/>
 					</PanelBody>
-					<PanelBody title={"Background Image Options"}>
+					<PanelBody title={ 'Background Image Options' }>
 						<p>
 							<strong>Select a Background Image:</strong>
 						</p>
 						<MediaUpload
-							onSelect={onSelectImage}
+							onSelect={ onSelectImage }
 							type="image"
-							value={backgroundImage}
-							render={({ open }) => (
-								<IconButton
+							value={ backgroundImage }
+							render={ ( { open } ) => (
+								<Button
 									className="editor-media-placeholder__button is-button is-default is-large"
 									icon="upload"
-									onClick={open}
+									onClick={ open }
 								>
 									Background Image
-								</IconButton>
-							)}
+								</Button>
+							) }
 						/>
 						<div
-							style={{
-								marginTop: "20px",
-								marginBottom: "40px",
-							}}
+							style={ {
+								marginTop: '20px',
+								marginBottom: '40px',
+							} }
 						>
 							<p>
 								<strong>Overlay Color:</strong>
 								<ColorPalette
-									value={overlayColor}
-									onChange={onOverlayColorChange}
+									value={ overlayColor }
+									onChange={ onOverlayColorChange }
 								/>
 							</p>
 						</div>
 						<RangeControl
-							label={"Overlay Opacity"}
-							value={overlayOpacity}
-							onChange={onOverlayOpacityChange}
-							min={0}
-							max={1}
-							step={0.05}
+							label={ 'Overlay Opacity' }
+							value={ overlayOpacity }
+							onChange={ onOverlayOpacityChange }
+							min={ 0 }
+							max={ 1 }
+							step={ 0.05 }
 						/>
 					</PanelBody>
 				</InspectorControls>
 			}
-			{radio && radio === "default" && (
+			{ radio && radio === 'default' && (
 				<div
 					className="hero"
-					style={{ backgroundImage: `url(${backgroundImage})` }}
+					style={ { backgroundImage: `url(${ backgroundImage })` } }
 				>
 					<div
 						className="overlay"
-						style={{
-							backgroundColor: `${overlayColor}`,
-							opacity: `${overlayOpacity}`,
-						}}
+						style={ {
+							backgroundColor: `${ overlayColor }`,
+							opacity: `${ overlayOpacity }`,
+						} }
 					></div>
 					<div className="container hero-container py-5">
 						<InnerBlocks
-							allowedBlocks={ALLOWED_BLOCKS}
-							template={MAIN_HERO_TEMPLATE}
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ MAIN_HERO_TEMPLATE }
 						/>
 					</div>
 				</div>
-			)}
+			) }
 
-			{radio && radio === "inner" && (
+			{ radio && radio === 'inner' && (
 				<div
 					className="hero-inner"
-					style={{ backgroundImage: `url(${backgroundImage})` }}
+					style={ { backgroundImage: `url(${ backgroundImage })` } }
 				>
 					<div
 						className="overlay"
-						style={{
-							backgroundColor: `${overlayColor}`,
-							opacity: `${overlayOpacity}`,
-						}}
+						style={ {
+							backgroundColor: `${ overlayColor }`,
+							opacity: `${ overlayOpacity }`,
+						} }
 					></div>
 					<div className="container hero-container py-5">
 						<InnerBlocks
-							allowedBlocks={ALLOWED_BLOCKS}
-							template={MAIN_HERO_TEMPLATE}
+							allowedBlocks={ ALLOWED_BLOCKS }
+							template={ MAIN_HERO_TEMPLATE }
 						/>
 					</div>
 				</div>
-			)}
+			) }
 		</section>
 	);
 }

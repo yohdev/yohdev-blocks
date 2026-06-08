@@ -1,11 +1,12 @@
 {
-	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "yohdev/repeater-card",
-	"version": "0.1.0",
-	"title": "Gutenburg - Repeater Card",
+	"version": "0.2.0",
+	"title": "YohDev - Repeater Card",
 	"category": "yohdev-blocks-category",
-	"description": "Custom YohDev Card Repeater",
-	"icon": "format-image",
+	"description": "A repeatable card grid with a heading and configurable columns.",
+	"icon": "grid-view",
 	"attributes": {
 		"title": {
 			"type": "string",
@@ -43,9 +44,15 @@
 		}
 	},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"align": [ "wide", "full" ]
 	},
-	"textdomain": "yohdev",
+	"example": {},
+	"textdomain": "yohdev-blocks",
 	"editorScript": "file:../../../../build/repeater-card.js",
 	"editorStyle": "file:../../../../build/repeater-card.css",
 	"style": "file:../../../../build/style-repeater-card.css"

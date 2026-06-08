@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -15,9 +15,9 @@ import {
 	useBlockProps,
 	InspectorControls,
 	RichText,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
-import { PanelBody, RadioControl } from "@wordpress/components";
+import { PanelBody, RadioControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -25,7 +25,7 @@ import { PanelBody, RadioControl } from "@wordpress/components";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -34,42 +34,44 @@ import "./editor.scss";
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
  * @return {WPElement} Element to render.
  */
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const { radio, title, url, text } = attributes;
 
-	function onChangeBtnText(newTitle) {
-		setAttributes({ title: newTitle });
+	function onChangeBtnText( newTitle ) {
+		setAttributes( { title: newTitle } );
 	}
 
-	function onChangeBtnUrl(newUrl) {
-		setAttributes({ url: newUrl });
+	function onChangeBtnUrl( newUrl ) {
+		setAttributes( { url: newUrl } );
 	}
 	return (
-		<section {...useBlockProps()}>
+		<section { ...useBlockProps() }>
 			{
-				<InspectorControls style={{ marginBottom: "40px" }}>
-					<PanelBody title={"Button Options"}>
+				<InspectorControls style={ { marginBottom: '40px' } }>
+					<PanelBody title={ 'Button Options' }>
 						<div
-							style={{
-								marginTop: "20px",
-								marginBottom: "40px",
-							}}
+							style={ {
+								marginTop: '20px',
+								marginBottom: '40px',
+							} }
 						>
 							<div>
 								<strong>Button Options:</strong>
 								<RadioControl
 									help="Edit the way the button looks."
-									selected={radio}
-									options={[{ label: "Default", value: "default" }]}
-									onChange={(option) => {
-										setAttributes({ radio: option });
-									}}
+									selected={ radio }
+									options={ [
+										{ label: 'Default', value: 'default' },
+									] }
+									onChange={ ( option ) => {
+										setAttributes( { radio: option } );
+									} }
 								/>
 							</div>
 						</div>
 					</PanelBody>
-					<InspectorControls style={{ marginBottom: "40px" }}>
-						<PanelBody title={"Font Color Settings"}>
+					<InspectorControls style={ { marginBottom: '40px' } }>
+						<PanelBody title={ 'Font Color Settings' }>
 							<p>
 								<strong>Select a Title Color:</strong>
 							</p>
@@ -81,11 +83,11 @@ export default function Edit({ attributes, setAttributes }) {
 				key="editable"
 				tagName="a"
 				className="btn"
-				value={title}
-				href={url}
-				text={text}
+				value={ title }
+				href={ url }
+				text={ text }
 				placeholder="Learn More"
-				onChange={onChangeBtnText}
+				onChange={ onChangeBtnText }
 			/>
 		</section>
 	);

@@ -8,6 +8,7 @@
 @import "../../../base/_base";
 
 .wp-block-yohdev-capable-card {
+
 	.yohdev-capable-card {
 		max-width: 530px;
 		min-height: 300px;
@@ -26,7 +27,7 @@
 				position: absolute;
 				width: 50%;
 				height: 15px;
-				left: 0px;
+				left: 0;
 			}
 
 			h3 {

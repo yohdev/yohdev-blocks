@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,31 +22,25 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
-export default function save({ attributes }) {
-	const {
-		title,
-		titleColor,
-		body,
-		bodyColor,
-		backgroundColor,
-		borderColor,
-	} = attributes;
+export default function save( { attributes } ) {
+	const { title, titleColor, body, bodyColor, backgroundColor, borderColor } =
+		attributes;
 	return (
-		<section {...useBlockProps.save()}>
+		<section { ...useBlockProps.save() }>
 			<div
 				className="yohdev-capable-card"
-				style={{ backgroundColor: `${backgroundColor}` }}
+				style={ { backgroundColor: `${ backgroundColor }` } }
 			>
 				<div className="content-container">
-					<h3 style={{ color: titleColor }}>{title}</h3>
+					<h3 style={ { color: titleColor } }>{ title }</h3>
 					<div
 						className="card-border"
-						style={{ backgroundColor: `${borderColor}` }}
+						style={ { backgroundColor: `${ borderColor }` } }
 					></div>
 					<RichText.Content
 						tagName="p"
-						value={body}
-						style={{ color: bodyColor }}
+						value={ body }
+						style={ { color: bodyColor } }
 					/>
 				</div>
 			</div>

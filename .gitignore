@@ -14,6 +14,15 @@ build/Release
 # Dependency directories
 node_modules/
 
+# Compiled block assets — built from source, never committed.
+build/
+
+# wp-env / local environment artifacts
+.wp-env.override.json
+
+# Packaged plugin zip produced by `npm run plugin:zip`
+yohdev-blocks.zip
+
 # Optional npm cache directory
 .npm
 

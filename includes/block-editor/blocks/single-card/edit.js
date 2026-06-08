@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -20,11 +20,11 @@ import {
 	ColorPalette,
 	MediaUpload,
 	InnerBlocks,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
-import { PanelBody, IconButton, RadioControl } from "@wordpress/components";
+import { PanelBody, Button, RadioControl } from '@wordpress/components';
 
-import { addFilter } from "@wordpress/hooks";
+import { addFilter } from '@wordpress/hooks';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -32,7 +32,7 @@ import { addFilter } from "@wordpress/hooks";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -42,22 +42,20 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 
-import { Button } from "@wordpress/components";
-
 const ALLOWED_BLOCKS = [
-	"core/button",
-	"core/heading",
-	"core/paragraph",
-	"yohdev/gutenberg-header",
+	'core/button',
+	'core/heading',
+	'core/paragraph',
+	'yohdev/gutenberg-header',
 ];
 
 const MY_TEMPLATE = [
-	["core/heading", {}],
-	["core/paragraph", {}],
-	["core/button", { className: "btn" }],
+	[ 'core/heading', {} ],
+	[ 'core/paragraph', {} ],
+	[ 'core/button', { className: 'btn' } ],
 ];
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const {
 		title,
 		body,
@@ -69,116 +67,122 @@ export default function Edit({ attributes, setAttributes }) {
 	} = attributes;
 	// Custom Functions
 
-	function onChangeHeading(newTitle) {
-		setAttributes({ title: newTitle });
+	function onChangeHeading( newTitle ) {
+		setAttributes( { title: newTitle } );
 	}
 
-	function onTitleColorChange(newColor) {
-		setAttributes({ titleColor: newColor });
+	function onTitleColorChange( newColor ) {
+		setAttributes( { titleColor: newColor } );
 	}
 
-	function onChangeBody(newBody) {
-		setAttributes({ body: newBody });
+	function onChangeBody( newBody ) {
+		setAttributes( { body: newBody } );
 	}
 
-	function onBodyColorChange(newColor) {
-		setAttributes({ bodyColor: newColor });
+	function onBodyColorChange( newColor ) {
+		setAttributes( { bodyColor: newColor } );
 	}
 
-	function onSelectImage(newImage) {
-		setAttributes({ featImage: newImage.sizes.full.url });
+	function onSelectImage( newImage ) {
+		setAttributes( { featImage: newImage.sizes.full.url } );
 	}
 
-	function onBackgroundColorChange(newColor) {
-		setAttributes({ backgroundColor: newColor });
+	function onBackgroundColorChange( newColor ) {
+		setAttributes( { backgroundColor: newColor } );
 	}
 
-	const onChangeAlignment = (newAlignment) => {
-		setAttributes({
-			alignment: newAlignment === undefined ? "none" : newAlignment,
-		});
+	const onChangeAlignment = ( newAlignment ) => {
+		setAttributes( {
+			alignment: newAlignment === undefined ? 'none' : newAlignment,
+		} );
 	};
 
 	return (
-		<section {...useBlockProps()}>
+		<section { ...useBlockProps() }>
 			{
-				<InspectorControls style={{ marginBottom: "40px" }}>
-					<PanelBody title={"Background Color Options"}>
-						<div style={{ marginBottom: "40px" }}>
+				<InspectorControls style={ { marginBottom: '40px' } }>
+					<PanelBody title={ 'Background Color Options' }>
+						<div style={ { marginBottom: '40px' } }>
 							<p>
 								<strong>Background Color:</strong>
 								<ColorPalette
-									value={backgroundColor}
-									onChange={onBackgroundColorChange}
+									value={ backgroundColor }
+									onChange={ onBackgroundColorChange }
 								/>
 							</p>
 						</div>
 					</PanelBody>
-					<PanelBody title={"Featured Image Options"}>
+					<PanelBody title={ 'Featured Image Options' }>
 						<p>
 							<strong>Show Featured Image:</strong>
 						</p>
 						<RadioControl
 							help="Option to choose if you want to show a featured image."
-							selected={radio}
-							options={[
-								{ label: "Hide", value: "hide" },
-								{ label: "Show", value: "show" },
-							]}
-							onChange={(option) => {
-								setAttributes({ radio: option });
-							}}
+							selected={ radio }
+							options={ [
+								{ label: 'Hide', value: 'hide' },
+								{ label: 'Show', value: 'show' },
+							] }
+							onChange={ ( option ) => {
+								setAttributes( { radio: option } );
+							} }
 						/>
 						<p>
 							<strong>Select a Featured Image:</strong>
 						</p>
 						<MediaUpload
-							onSelect={onSelectImage}
+							onSelect={ onSelectImage }
 							type="image"
-							value={featImage}
-							render={({ open }) => (
-								<IconButton
+							value={ featImage }
+							render={ ( { open } ) => (
+								<Button
 									className="editor-media-placeholder__button is-button is-default is-large"
 									icon="upload"
-									onClick={open}
+									onClick={ open }
 								>
 									Background Image
-								</IconButton>
-							)}
+								</Button>
+							) }
 						/>
 					</PanelBody>
-					<PanelBody title={"Font Color Settings"}>
+					<PanelBody title={ 'Font Color Settings' }>
 						<p>
 							<strong>Select a Title Color:</strong>
 						</p>
-						<ColorPalette value={titleColor} onChange={onTitleColorChange} />
+						<ColorPalette
+							value={ titleColor }
+							onChange={ onTitleColorChange }
+						/>
 						<p>
 							<strong>Select a Body Color:</strong>
 						</p>
-						<ColorPalette value={bodyColor} onChange={onBodyColorChange} />
+						<ColorPalette
+							value={ bodyColor }
+							onChange={ onBodyColorChange }
+						/>
 					</PanelBody>
 				</InspectorControls>
 			}
 			<div
 				className="single-card"
-				style={{ backgroundColor: `${backgroundColor}` }}
+				style={ { backgroundColor: `${ backgroundColor }` } }
 			>
 				<BlockControls>
 					<AlignmentToolbar
-						value={attributes.alignment}
-						onChange={onChangeAlignment}
+						value={ attributes.alignment }
+						onChange={ onChangeAlignment }
 					/>
 				</BlockControls>
 				<div className="img-container">
-					{radio && radio === "show" && (
-						<img className="img-fluid" src={featImage} alt="" />
-					)}
+					{ radio && radio === 'show' && (
+						<img className="img-fluid" src={ featImage } alt="" />
+					) }
 				</div>
 				<div
 					className="card-content"
-					style={{ textAlign: attributes.alignment }}
+					style={ { textAlign: attributes.alignment } }
 				>
-					<InnerBlocks template={MY_TEMPLATE} />
+					<InnerBlocks template={ MY_TEMPLATE } />
 				</div>
 			</div>
 		</section>

@@ -1,11 +1,12 @@
 {
-	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "yohdev/cpt-selection",
-	"version": "0.1.0",
-	"title": "Gutenburg - CPT Selection Block",
+	"version": "0.2.0",
+	"title": "YohDev - Post Selection Block",
 	"category": "yohdev-blocks-category",
-	"description": "Custom Post Type Selection",
-	"icon": "format-image",
+	"description": "Displays a dynamic list of the most recent posts.",
+	"icon": "list-view",
 	"attributes": {
 		"title": {
 			"type": "string",
@@ -35,10 +36,17 @@
 		}
 	},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"align": [ "wide", "full" ]
 	},
-	"textdomain": "yohdev",
+	"example": {},
+	"textdomain": "yohdev-blocks",
 	"editorScript": "file:../../../../build/cpt-selection.js",
 	"editorStyle": "file:../../../../build/cpt-selection.css",
-	"style": "file:../../../../build/style-cpt-selection.css"
+	"style": "file:../../../../build/style-cpt-selection.css",
+	"render": "file:./render.php"
 }

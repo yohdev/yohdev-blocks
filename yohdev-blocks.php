@@ -1,51 +1,107 @@
 <?php
 /**
  * Plugin Name:       YohDev Gutenberg Blocks
- * Description:       Description
- * Requires at least: 5.8
- * Requires PHP:      7.0
- * Version:           0.1.0
+ * Description:       A library of custom YohDev Gutenberg blocks.
+ * Requires at least: 6.7
+ * Requires PHP:      7.4
+ * Version:           0.2.0
  * Author:            YohDev
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       yohdev-blocks
+ * Domain Path:       /languages
  *
  * @package           yohdev
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // No direct access.
+}
+
+/**
+ * Load translations for the plugin.
+ */
+function yohdev_blocks_load_textdomain() {
+	load_plugin_textdomain(
+		'yohdev-blocks',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages'
+	);
+}
+add_action( 'init', 'yohdev_blocks_load_textdomain' );
+
+/**
+ * Register every block that ships with this plugin.
+ *
+ * Blocks live in their own directory under includes/block-editor/blocks/ and
+ * are discovered dynamically, so adding a new block requires no changes here.
+ */
 function yohdev_blocks_init() {
+	$blocks_dir = __DIR__ . '/includes/block-editor/blocks';
 
-	// Get all block files from the directory.
-	$dir    = '/includes/block-editor/blocks/';
-	$blocks = scandir(__DIR__ . $dir);
+	if ( ! is_dir( $blocks_dir ) ) {
+		return;
+	}
 
-	// Remove unwanted files in the array.
-	$blocks = array_diff($blocks, array('.', '..','.DS_Store'));
+	foreach ( scandir( $blocks_dir ) as $block ) {
+		// Skip dotfiles such as ., .. and .DS_Store.
+		if ( '' === $block || '.' === $block[0] ) {
+			continue;
+		}
 
-	// Loop through and register each block dynamically.
-	foreach($blocks as $block){
-		register_block_type( __DIR__. '/includes/block-editor/blocks/'.  $block);
-	};
+		$block_path = $blocks_dir . '/' . $block;
+
+		// Only register directories that actually contain a block.json.
+		if ( is_dir( $block_path ) && file_exists( $block_path . '/block.json' ) ) {
+			register_block_type( $block_path );
+		}
+	}
 }
 add_action( 'init', 'yohdev_blocks_init' );
 
-function yohdev_block_category( $categories, $post ) {
+/**
+ * Register the custom block category used to group YohDev blocks.
+ *
+ * Uses the modern `block_categories_all` filter (the older `block_categories`
+ * filter was deprecated in WordPress 5.8).
+ *
+ * @param array $categories Existing block categories.
+ * @return array Filtered block categories.
+ */
+function yohdev_block_category( $categories ) {
 	return array_merge(
 		$categories,
 		array(
 			array(
-				'slug' => 'yohdev-blocks-category',
-				'title' => __( 'YohDev Blocks', 'yohdev-blocks-category' ),
+				'slug'  => 'yohdev-blocks-category',
+				'title' => __( 'YohDev Blocks', 'yohdev-blocks' ),
 			),
 		)
 	);
 }
-add_filter( 'block_categories', 'yohdev_block_category', 10, 2);
+add_filter( 'block_categories_all', 'yohdev_block_category' );
 
-function myguten_enqueue() {
-    wp_enqueue_script(
-        'myguten-script',
-        plugins_url( 'myguten.js', __FILE__ )
-    );
+/**
+ * Enqueue the editor-only script that adds helper classes to certain blocks.
+ *
+ * The script is built through @wordpress/scripts, so we read its generated
+ * dependency and version metadata from the companion *.asset.php file.
+ */
+function yohdev_blocks_enqueue_editor_assets() {
+	$asset_file = __DIR__ . '/build/myguten.asset.php';
+
+	if ( ! file_exists( $asset_file ) ) {
+		return;
+	}
+
+	$asset = include $asset_file;
+
+	wp_enqueue_script(
+		'yohdev-myguten',
+		plugins_url( 'build/myguten.js', __FILE__ ),
+		$asset['dependencies'],
+		$asset['version'],
+		true
+	);
 }
-add_action( 'enqueue_block_editor_assets', 'myguten_enqueue' );
+add_action( 'enqueue_block_editor_assets', 'yohdev_blocks_enqueue_editor_assets' );

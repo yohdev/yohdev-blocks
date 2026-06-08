@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -13,18 +13,19 @@ import { __ } from "@wordpress/i18n";
  */
 import {
 	useBlockProps,
-	RichText,
 	InspectorControls,
 	ColorPalette,
-	MediaUpload,
-	InnerBlocks,
-	BlockControls,
-	AlignmentToolbar,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
-import { RadioControl } from "@wordpress/components";
+import { PanelBody, RadioControl, Spinner } from '@wordpress/components';
 
-import { PanelBody, IconButton, RangeControl } from "@wordpress/components";
+/**
+ * Pull data straight from the editor data store rather than a hardcoded REST
+ * URL, so the block works on any site/environment.
+ */
+import { useSelect } from '@wordpress/data';
+import { store as coreStore } from '@wordpress/core-data';
+import { decodeEntities } from '@wordpress/html-entities';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -32,7 +33,7 @@ import { PanelBody, IconButton, RangeControl } from "@wordpress/components";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -41,126 +42,163 @@ import "./editor.scss";
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
  * @return {WPElement} Element to render.
  */
+export default function Edit( { attributes, setAttributes } ) {
+	const { backgroundColor, radio } = attributes;
 
-const ALLOWED_BLOCKS = ["core/heading", "core/button", "core/paragraph"];
+	const { posts, isResolving } = useSelect( ( select ) => {
+		const query = { per_page: 6, _embed: true };
 
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+		return {
+			posts: select( coreStore ).getEntityRecords(
+				'postType',
+				'post',
+				query
+			),
+			isResolving: select( coreStore ).isResolving( 'getEntityRecords', [
+				'postType',
+				'post',
+				query,
+			] ),
+		};
+	}, [] );
 
-export default function Edit({ attributes, setAttributes }) {
-	const { backgroundColor, radio, body } = attributes;
-
-	const [posts, setPosts] = useState([]);
-
-	const [isLoaded, setIsLoaded] = useState(false);
-
-	useEffect(() => {
-		async function loadPosts() {
-			const response = await fetch(
-				"http://localhost:8080/wp-json/wp/v2/posts/?_embed"
-			);
-			if (!response.ok) {
-				// oups! something went wrong
-				return;
-			}
-
-			const posts = await response.json();
-			console.log(posts);
-			setPosts(posts);
-
-			setIsLoaded(true);
-			setAttributes({ posts: posts, isLoaded: isLoaded });
-		}
-
-		loadPosts();
-	}, [isLoaded]);
-
-	// Custom Functions
-
-	function onBackgroundColorChange(newColor) {
-		setAttributes({ backgroundColor: newColor });
+	function onBackgroundColorChange( newColor ) {
+		setAttributes( { backgroundColor: newColor } );
 	}
 
 	return (
-		<section {...useBlockProps()}>
-			{
-				<InspectorControls style={{ marginBottom: "40px" }}>
-					<PanelBody title={"Background Options"}>
-						<div
-							style={{
-								marginTop: "20px",
-								marginBottom: "40px",
-							}}
-						>
-							<p>
-								<strong>Background Color:</strong>
-								<ColorPalette
-									value={backgroundColor}
-									onChange={onBackgroundColorChange}
-								/>
-							</p>
-						</div>
-					</PanelBody>
-					<PanelBody title={"Post Type Selection"}>
-						<div
-							style={{
-								marginTop: "20px",
-								marginBottom: "40px",
-							}}
-						>
-							<p>
-								<strong>Select a Post Type:</strong>
-								<RadioControl
-									help="Choose which post type you want to show."
-									selected={radio}
-									options={[
-										{ label: "Default", value: "default" },
-										{ label: "Option Two", value: "option-two" },
-									]}
-									onChange={(option) => {
-										setAttributes({ radio: option });
-									}}
-								/>
-							</p>
-						</div>
-					</PanelBody>
-				</InspectorControls>
-			}
+		<section { ...useBlockProps() }>
+			<InspectorControls style={ { marginBottom: '40px' } }>
+				<PanelBody
+					title={ __( 'Background Options', 'yohdev-blocks' ) }
+				>
+					<div style={ { marginTop: '20px', marginBottom: '40px' } }>
+						<p>
+							<strong>
+								{ __( 'Background Color:', 'yohdev-blocks' ) }
+							</strong>
+							<ColorPalette
+								value={ backgroundColor }
+								onChange={ onBackgroundColorChange }
+							/>
+						</p>
+					</div>
+				</PanelBody>
+				<PanelBody
+					title={ __( 'Post Type Selection', 'yohdev-blocks' ) }
+				>
+					<div style={ { marginTop: '20px', marginBottom: '40px' } }>
+						<p>
+							<strong>
+								{ __( 'Select a Post Type:', 'yohdev-blocks' ) }
+							</strong>
+							<RadioControl
+								help={ __(
+									'Choose which post type you want to show.',
+									'yohdev-blocks'
+								) }
+								selected={ radio }
+								options={ [
+									{
+										label: __( 'Default', 'yohdev-blocks' ),
+										value: 'default',
+									},
+									{
+										label: __(
+											'Option Two',
+											'yohdev-blocks'
+										),
+										value: 'option-two',
+									},
+								] }
+								onChange={ ( option ) => {
+									setAttributes( { radio: option } );
+								} }
+							/>
+						</p>
+					</div>
+				</PanelBody>
+			</InspectorControls>
+
 			<div
 				className="yohdev-cpt-selection"
-				style={{ backgroundColor: `${backgroundColor}` }}
+				style={ { backgroundColor: `${ backgroundColor }` } }
 			>
-				{radio && radio === "default" && (
+				{ radio === 'default' && (
 					<div className="posts-container">
 						<div className="container">
 							<div className="row">
-								{isLoaded
-									? posts.map((post, index) => (
-											<div className="col-lg-4" key={index}>
+								{ isResolving && <Spinner /> }
+								{ ! isResolving &&
+									posts &&
+									posts.length > 0 &&
+									posts.map( ( post ) => {
+										const featuredImage =
+											post._embedded?.[
+												'wp:featuredmedia'
+											]?.[ 0 ]?.source_url;
+
+										return (
+											<div
+												className="col-lg-4"
+												key={ post.id }
+											>
 												<div className="yohdev-card">
-													<img
-														className="img-fluid"
-														src={
-															post._embedded["wp:featuredmedia"][0].source_url
-														}
-													/>
-													<h3>{post.title.rendered}</h3>
-													<p
-														dangerouslySetInnerHTML={{
-															__html: post.content.rendered,
-														}}
-													></p>
-													<a href={post.id}>Read More</a>
+													{ featuredImage && (
+														<img
+															className="img-fluid"
+															src={
+																featuredImage
+															}
+															alt={ decodeEntities(
+																post.title
+																	?.rendered ||
+																	''
+															) }
+														/>
+													) }
+													<h3>
+														{ decodeEntities(
+															post.title
+																?.rendered || ''
+														) }
+													</h3>
+													<div
+														dangerouslySetInnerHTML={ {
+															__html:
+																post.excerpt
+																	?.rendered ||
+																'',
+														} }
+													></div>
+													<a href={ post.link }>
+														{ __(
+															'Read More',
+															'yohdev-blocks'
+														) }
+													</a>
 												</div>
 											</div>
-									  ))
-									: "No posts available"}
+										);
+									} ) }
+								{ ! isResolving &&
+									posts &&
+									posts.length === 0 && (
+										<p>
+											{ __(
+												'No posts available.',
+												'yohdev-blocks'
+											) }
+										</p>
+									) }
 							</div>
 						</div>
 					</div>
-				)}
+				) }
 
-				{radio && radio === "option-two" && <h1>Still Here</h1>}
+				{ radio === 'option-two' && (
+					<h1>{ __( 'Still Here', 'yohdev-blocks' ) }</h1>
+				) }
 			</div>
 		</section>
 	);

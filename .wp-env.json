@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/wp-env.json",
+	"core": "WordPress/WordPress#7.0",
+	"phpVersion": "7.4",
+	"plugins": [ "." ],
+	"config": {
+		"WP_DEBUG": true,
+		"SCRIPT_DEBUG": true
+	},
+	"env": {
+		"tests": {
+			"core": "WordPress/WordPress#master"
+		}
+	}
+}

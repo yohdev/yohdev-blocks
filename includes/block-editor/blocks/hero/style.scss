@@ -7,16 +7,17 @@
 @import "../../../base/_base";
 
 .wp-block-yohdev-hero {
+
 	.wp-block-columns {
 		position: "relative";
 		z-index: 2;
 	}
+
 	.hero {
 		position: relative;
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
-		min-height: 450px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -36,10 +37,12 @@
 			max-width: 1180px;
 
 			.content {
+
 				h2 {
 					font-family: $primary-font;
 					margin: 0;
 				}
+
 				p {
 					line-height: 1.6em;
 					margin-bottom: 30px;

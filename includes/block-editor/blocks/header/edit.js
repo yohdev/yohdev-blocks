@@ -22,7 +22,7 @@ import {
 	AlignmentToolbar,
 } from '@wordpress/block-editor';
 
-import { PanelBody, IconButton, RangeControl } from '@wordpress/components';
+import { PanelBody, RangeControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.

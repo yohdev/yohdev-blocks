@@ -1,13 +1,26 @@
 {
-	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "yohdev/button",
-	"version": "0.1.0",
-	"title": "Gutenburg - Button",
+	"version": "0.2.0",
+	"title": "YohDev - Button",
 	"category": "yohdev-blocks-category",
-	"icon": "format-image",
-	"description": "Description",
+	"icon": "button",
+	"description": "A styled call-to-action button with a customizable label and link.",
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"fontWeight": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
 	},
 	"attributes": {
 		"title": {
@@ -35,7 +48,8 @@
 			"default": "default"
 		}
 	},
-	"textdomain": "yohdev",
+	"example": {},
+	"textdomain": "yohdev-blocks",
 	"editorScript": "file:../../../../build/button.js",
 	"editorStyle": "file:../../../../build/button.css",
 	"style": "file:../../../../build/style-button.css"

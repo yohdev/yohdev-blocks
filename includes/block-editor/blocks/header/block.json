@@ -1,38 +1,51 @@
 {
-	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "yohdev/header",
-	"version": "0.1.0",
-	"title": "Gutenburg - Header",
+	"version": "0.2.0",
+	"title": "YohDev - Header",
 	"category": "yohdev-blocks-category",
-	"description": "Custom YohDev Header",
-	"icon": "format-image",
-	"attributes":{
+	"description": "A section heading with an accent dot and alignment options.",
+	"icon": "heading",
+	"attributes": {
 		"title": {
 			"type": "string",
 			"source": "html",
 			"selector": "h1"
-		  },
-		  "titleColor": {
+		},
+		"titleColor": {
 			"type": "string",
 			"default": "black"
-		  },
-		  "titleSize": {
+		},
+		"titleSize": {
 			"type": "number",
 			"default": 65
-		  },
-		  "dotColor": {
+		},
+		"dotColor": {
 			"type": "string",
 			"default": "#9185de"
-		  },
-		  "alignment": {
+		},
+		"alignment": {
 			"type": "string",
 			"default": "none"
-		  }
+		}
 	},
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"text": true
+		},
+		"typography": {
+			"fontSize": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"align": [ "wide", "full" ]
 	},
-	"textdomain": "yohdev",
+	"example": {},
+	"textdomain": "yohdev-blocks",
 	"editorScript": "file:../../../../build/header.js",
 	"editorStyle": "file:../../../../build/header.css",
 	"style": "file:../../../../build/style-header.css"

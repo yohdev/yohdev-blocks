@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,23 +22,23 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
-export default function save({ attributes }) {
+export default function save( { attributes } ) {
 	const { backgroundImage, overlayColor, overlayOpacity, radio } = attributes;
 	return (
-		<section {...useBlockProps.save()}>
+		<section { ...useBlockProps.save() }>
 			<div
 				className="hero"
-				style={{ backgroundImage: `url(${backgroundImage})` }}
+				style={ { backgroundImage: `url(${ backgroundImage })` } }
 			>
 				<div
 					className="overlay"
-					style={{
-						backgroundColor: `${overlayColor}`,
-						opacity: `${overlayOpacity}`,
-					}}
+					style={ {
+						backgroundColor: `${ overlayColor }`,
+						opacity: `${ overlayOpacity }`,
+					} }
 				></div>
-				{radio && radio === "default" && <InnerBlocks.Content />}
-				{radio && radio === "inner" && <InnerBlocks.Content />}
+				{ radio && radio === 'default' && <InnerBlocks.Content /> }
+				{ radio && radio === 'inner' && <InnerBlocks.Content /> }
 			</div>
 		</section>
 	);

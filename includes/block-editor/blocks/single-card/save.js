@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, RichText, InnerBlocks } from "@wordpress/block-editor";
+import { useBlockProps, RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,7 +22,7 @@ import { useBlockProps, RichText, InnerBlocks } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
-export default function save({ attributes }) {
+export default function save( { attributes } ) {
 	const {
 		featImage,
 		radio,
@@ -33,17 +33,19 @@ export default function save({ attributes }) {
 		backgroundColor,
 	} = attributes;
 	return (
-		<section {...useBlockProps.save()}>
+		<section { ...useBlockProps.save() }>
 			<div
 				className="single-card"
-				style={{ backgroundColor: `${backgroundColor}` }}
+				style={ { backgroundColor: `${ backgroundColor }` } }
 			>
 				<div className="img-container">
-					{radio && radio === "show" && <img src={featImage} alt="" />}
+					{ radio && radio === 'show' && (
+						<img src={ featImage } alt="" />
+					) }
 				</div>
 				<div
 					className="card-content"
-					style={{ textAlign: attributes.alignment }}
+					style={ { textAlign: attributes.alignment } }
 				>
 					<InnerBlocks.Content />
 				</div>

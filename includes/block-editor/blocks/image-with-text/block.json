@@ -1,46 +1,56 @@
 {
-	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "yohdev/image-with-text",
-	"version": "0.1.0",
-	"title": "Gutenburg - Image With Text",
+	"version": "0.2.0",
+	"title": "YohDev - Image With Text",
 	"category": "yohdev-blocks-category",
-	"description": "Custom YohDev Image With Text",
-	"icon": "format-image",
-	"attributes":{
+	"description": "A side-by-side image and text layout with overlay options.",
+	"icon": "align-pull-left",
+	"attributes": {
 		"title": {
 			"type": "string",
 			"source": "html",
 			"selector": "h1"
-		  },
-		  "titleColor": {
+		},
+		"titleColor": {
 			"type": "string",
 			"default": "black"
-		  },
-		  "titleSize": {
+		},
+		"titleSize": {
 			"type": "number",
 			"default": 65
-		  },
-		  "columns": {
+		},
+		"columns": {
 			"type": "number",
 			"default": 2
-		  },
-		  "backgroundImage": {
+		},
+		"backgroundImage": {
 			"type": "string",
 			"default": null
-		  },
-		  "overlayColor": {
+		},
+		"overlayColor": {
 			"type": "string",
 			"default": "black"
-		  },
-		  "overlayOpacity": {
+		},
+		"overlayOpacity": {
 			"type": "number",
 			"default": 0.3
-		  }
+		}
 	},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		},
+		"align": [ "wide", "full" ]
 	},
-	"textdomain": "yohdev",
+	"example": {},
+	"textdomain": "yohdev-blocks",
 	"editorScript": "file:../../../../build/image-with-text.js",
 	"editorStyle": "file:../../../../build/image-with-text.css",
 	"style": "file:../../../../build/style-image-with-text.css"

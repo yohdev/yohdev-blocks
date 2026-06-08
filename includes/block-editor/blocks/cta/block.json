@@ -1,11 +1,12 @@
 {
-	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "yohdev/cta",
-	"version": "0.1.0",
-	"title": "Gutenburg - CTA",
+	"version": "0.2.0",
+	"title": "YohDev - Call To Action",
 	"category": "yohdev-blocks-category",
-	"description": "Custom YohDev CTA",
-	"icon": "format-image",
+	"description": "A call-to-action section with a heading, body copy and alignment options.",
+	"icon": "megaphone",
 	"attributes": {
 		"title": {
 			"type": "string",
@@ -35,9 +36,22 @@
 		}
 	},
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"align": [ "wide", "full" ]
 	},
-	"textdomain": "yohdev",
+	"example": {},
+	"textdomain": "yohdev-blocks",
 	"editorScript": "file:../../../../build/cta.js",
 	"editorStyle": "file:../../../../build/cta.css",
 	"style": "file:../../../../build/style-cta.css"

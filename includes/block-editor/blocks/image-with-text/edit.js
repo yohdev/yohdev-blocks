@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -20,11 +20,11 @@ import {
 	InnerBlocks,
 	BlockControls,
 	AlignmentToolbar,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
-import { PanelBody, IconButton, RangeControl } from "@wordpress/components";
+import { PanelBody, Button, RangeControl } from '@wordpress/components';
 
-import { addFilter } from "@wordpress/hooks";
+import { addFilter } from '@wordpress/hooks';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -32,7 +32,7 @@ import { addFilter } from "@wordpress/hooks";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -43,38 +43,38 @@ import "./editor.scss";
  */
 
 const ALLOWED_BLOCKS = [
-	"core/columns",
-	"core/column",
-	"core/heading",
-	"core/paragraph",
-	"core/button",
-	"core/image",
+	'core/columns',
+	'core/column',
+	'core/heading',
+	'core/paragraph',
+	'core/button',
+	'core/image',
 ];
 
 const MY_TEMPLATE = [
 	[
-		"core/columns",
+		'core/columns',
 		{ columns: 2 },
 		[
 			[
-				"core/column",
-				{ className: "image" },
-				[["core/image", { className: "img-fluid" }]],
+				'core/column',
+				{ className: 'image' },
+				[ [ 'core/image', { className: 'img-fluid' } ] ],
 			],
 			[
-				"core/column",
-				{ className: "content" },
+				'core/column',
+				{ className: 'content' },
 				[
-					["core/heading", { placeholder: "Enter heading..." }],
-					["core/paragraph", { placeholder: "Enter body..." }],
-					["core/button", { align: "left" }],
+					[ 'core/heading', { placeholder: 'Enter heading...' } ],
+					[ 'core/paragraph', { placeholder: 'Enter body...' } ],
+					[ 'core/button', { align: 'left' } ],
 				],
 			],
 		],
 	],
 ];
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const {
 		className,
 		backgroundImage,
@@ -84,101 +84,101 @@ export default function Edit({ attributes, setAttributes }) {
 	} = attributes;
 	// Custom Functions
 
-	function onChangeHeading(newTitle) {
-		setAttributes({ title: newTitle });
+	function onChangeHeading( newTitle ) {
+		setAttributes( { title: newTitle } );
 	}
 
-	function onTitleColorChange(newColor) {
-		setAttributes({ titleColor: newColor });
+	function onTitleColorChange( newColor ) {
+		setAttributes( { titleColor: newColor } );
 	}
 
-	function onChangeAlignment(newAlignment) {
-		setAttributes({
-			alignment: newAlignment === undefined ? "none" : newAlignment,
-		});
+	function onChangeAlignment( newAlignment ) {
+		setAttributes( {
+			alignment: newAlignment === undefined ? 'none' : newAlignment,
+		} );
 	}
 
-	function onSelectImage(newImage) {
-		setAttributes({ backgroundImage: newImage.sizes.full.url });
+	function onSelectImage( newImage ) {
+		setAttributes( { backgroundImage: newImage.sizes.full.url } );
 	}
 
-	function onOverlayColorChange(newColor) {
-		setAttributes({ overlayColor: newColor });
+	function onOverlayColorChange( newColor ) {
+		setAttributes( { overlayColor: newColor } );
 	}
 
-	function onOverlayOpacityChange(newOpacity) {
-		setAttributes({ overlayOpacity: newOpacity });
+	function onOverlayOpacityChange( newOpacity ) {
+		setAttributes( { overlayOpacity: newOpacity } );
 	}
 
 	return (
-		<section {...useBlockProps()}>
+		<section { ...useBlockProps() }>
 			{
-				<InspectorControls style={{ marginBottom: "40px" }}>
-					<PanelBody title={"Columns Settings"}>
+				<InspectorControls style={ { marginBottom: '40px' } }>
+					<PanelBody title={ 'Columns Settings' }>
 						<p>
 							<strong>Number of Columns:</strong>
 						</p>
 
-						<RangeControl value={columns} />
+						<RangeControl value={ columns } />
 					</PanelBody>
-					<PanelBody title={"Background Image Options"}>
+					<PanelBody title={ 'Background Image Options' }>
 						<p>
 							<strong>Select a Background Image:</strong>
 						</p>
 						<MediaUpload
-							onSelect={onSelectImage}
+							onSelect={ onSelectImage }
 							type="image"
-							value={backgroundImage}
-							render={({ open }) => (
-								<IconButton
+							value={ backgroundImage }
+							render={ ( { open } ) => (
+								<Button
 									className="editor-media-placeholder__button is-button is-default is-large"
 									icon="upload"
-									onClick={open}
+									onClick={ open }
 								>
 									Background Image
-								</IconButton>
-							)}
+								</Button>
+							) }
 						/>
 						<div
-							style={{
-								marginTop: "20px",
-								marginBottom: "40px",
-							}}
+							style={ {
+								marginTop: '20px',
+								marginBottom: '40px',
+							} }
 						>
 							<p>
 								<strong>Overlay Color:</strong>
 								<ColorPalette
-									value={overlayColor}
-									onChange={onOverlayColorChange}
+									value={ overlayColor }
+									onChange={ onOverlayColorChange }
 								/>
 							</p>
 						</div>
 						<RangeControl
-							label={"Overlay Opacity"}
-							value={overlayOpacity}
-							onChange={onOverlayOpacityChange}
-							min={0}
-							max={1}
-							step={0.05}
+							label={ 'Overlay Opacity' }
+							value={ overlayOpacity }
+							onChange={ onOverlayOpacityChange }
+							min={ 0 }
+							max={ 1 }
+							step={ 0.05 }
 						/>
 					</PanelBody>
 				</InspectorControls>
 			}
 			<div
 				className="image-with-text"
-				style={{ backgroundImage: `url(${backgroundImage})` }}
+				style={ { backgroundImage: `url(${ backgroundImage })` } }
 			>
 				<div
 					className="overlay"
-					style={{
-						backgroundColor: `${overlayColor}`,
-						opacity: `${overlayOpacity}`,
-					}}
+					style={ {
+						backgroundColor: `${ overlayColor }`,
+						opacity: `${ overlayOpacity }`,
+					} }
 				></div>
 				<div className="container">
 					<InnerBlocks
-						allowedBlocks={ALLOWED_BLOCKS}
-						template={MY_TEMPLATE}
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ MY_TEMPLATE }
 						templateLock="insert"
 					/>
 				</div>

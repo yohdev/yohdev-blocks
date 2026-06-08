@@ -33,30 +33,34 @@
 
 // Small devices (landscape phones, 576px and up)
 @mixin small-screen() {
-  @media screen and (min-width: $screen-sm) {
-    @content;
-  }
+
+	@media screen and (min-width: $screen-sm) {
+		@content;
+	}
 }
 
 // Medium devices (tablets, 768px and up)
 @mixin medium-screen() {
-  @media screen and (min-width: $screen-md) {
-    @content;
-  }
+
+	@media screen and (min-width: $screen-md) {
+		@content;
+	}
 }
 
 // Large devices (desktops, 992px and up)
 @mixin large-screen() {
-  @media screen and (min-width: $screen-lg) {
-    @content;
-  }
+
+	@media screen and (min-width: $screen-lg) {
+		@content;
+	}
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @mixin xlarge-screen() {
-  @media screen and (min-width: $screen-xl) {
-    @content;
-  }
+
+	@media screen and (min-width: $screen-xl) {
+		@content;
+	}
 }
 
 // Variable Media Query Mixins
@@ -76,29 +80,33 @@
 
 // Inline media queries
 @mixin respond-min($width) {
-  @media screen and (min-width: $width) {
-    @content;
-  }
+
+	@media screen and (min-width: $width) {
+		@content;
+	}
 }
 
 @mixin respond-max($width) {
-  @media screen and (max-width: $width) {
-    @content;
-  }
+
+	@media screen and (max-width: $width) {
+		@content;
+	}
 }
 
 @mixin bg-text-white {
-  h4,
-  h2,
-  p {
-    color: $neutral-surface !important;
-  }
+
+	h4,
+	h2,
+	p {
+		color: $neutral-surface !important;
+	}
 }
 
 @mixin bg-text-black {
-  h4,
-  h2,
-  p {
-    color: $neutral-black !important;
-  }
+
+	h4,
+	h2,
+	p {
+		color: $neutral-black !important;
+	}
 }

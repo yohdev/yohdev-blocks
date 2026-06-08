@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, InnerBlocks, Radio } from "@wordpress/block-editor";
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -22,24 +22,24 @@ import { useBlockProps, InnerBlocks, Radio } from "@wordpress/block-editor";
  *
  * @return {WPElement} Element to render.
  */
-export default function save({ attributes }) {
+export default function save( { attributes } ) {
 	const { overlayColor, radio } = attributes;
 	return (
-		<section {...useBlockProps.save()}>
+		<section { ...useBlockProps.save() }>
 			<div
 				className="card-repeater"
-				style={{ backgroundColor: `${overlayColor}` }}
+				style={ { backgroundColor: `${ overlayColor }` } }
 			>
-				{radio && radio === "3X1" && (
+				{ radio && radio === '3X1' && (
 					<div className="container">
 						<InnerBlocks.Content />
 					</div>
-				)}
-				{radio && radio === "3X2" && (
+				) }
+				{ radio && radio === '3X2' && (
 					<div className="container">
 						<InnerBlocks.Content />
 					</div>
-				)}
+				) }
 			</div>
 		</section>
 	);

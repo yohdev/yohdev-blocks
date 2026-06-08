@@ -1,12 +1,14 @@
 === Yohdev Blocks ===
-Contributors:      The WordPress Contributors
-Tags:              block
-Tested up to:      5.8.0
-Stable tag:        0.1.0
+Contributors:      yohdev
+Tags:              block, gutenberg, blocks
+Requires at least: 6.7
+Requires PHP:      7.4
+Tested up to:      7.0
+Stable tag:        0.2.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Example block written with ESNext standard and JSX support – build step required.
+A library of custom YohDev Gutenberg blocks, written with ESNext/JSX – build step required.
 
 == Description ==
 
@@ -44,6 +46,14 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 0.2.0 =
+* Updated all blocks to Block API v3 for WordPress 7.0 compatibility.
+* Raised minimum requirements to WordPress 6.7 and PHP 7.4.
+* Replaced the deprecated `block_categories` filter with `block_categories_all`.
+* Replaced the removed `IconButton` component with `Button`.
+* Reworked the CPT Selection block as a dynamic block that reads posts from the editor data store / server-side render instead of a hardcoded REST URL.
+* Modernized tooling (`@wordpress/scripts`), removed unused dependencies, and added a containerized local environment via `@wordpress/env`.
 
 = 0.1.0 =
 * Release

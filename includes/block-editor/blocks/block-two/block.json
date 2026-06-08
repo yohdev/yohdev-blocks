@@ -1,15 +1,29 @@
 {
-	"apiVersion": 2,
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
 	"name": "yohdev/block-two",
-	"version": "0.1.0",
-	"title": "Block Two Title",
-	"category": "widgets",
+	"version": "0.2.0",
+	"title": "YohDev - Starter Block",
+	"category": "yohdev-blocks-category",
 	"icon": "smiley",
-	"description": "Description",
+	"description": "A minimal starter block used as a scaffold for new YohDev blocks.",
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"typography": {
+			"fontSize": true
+		},
+		"align": true
 	},
-	"textdomain": "yohdev",
+	"example": {},
+	"textdomain": "yohdev-blocks",
 	"editorScript": "file:../../../../build/block-two.js",
 	"editorStyle": "file:../../../../build/block-two.css",
 	"style": "file:../../../../build/style-block-two.css"

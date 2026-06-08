@@ -7,6 +7,7 @@
 @import "../../../base/_base";
 
 .wp-block-yohdev-image-with-text {
+
 	.image-with-text {
 		padding: 50px 0;
 		position: relative;
@@ -21,6 +22,7 @@
 
 		.image {
 			position: relative;
+
 			img {
 				max-width: 100%;
 				height: auto;
@@ -29,6 +31,7 @@
 
 		.content {
 			position: relative;
+
 			@include medium-screen {
 				padding: 30px;
 			}

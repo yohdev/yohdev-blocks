@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -20,9 +20,9 @@ import {
 	InnerBlocks,
 	AlignmentToolbar,
 	BlockControls,
-} from "@wordpress/block-editor";
+} from '@wordpress/block-editor';
 
-import { PanelBody, IconButton, RangeControl } from "@wordpress/components";
+import { PanelBody, RangeControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -30,7 +30,7 @@ import { PanelBody, IconButton, RangeControl } from "@wordpress/components";
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import "./editor.scss";
+import './editor.scss';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -40,50 +40,50 @@ import "./editor.scss";
  * @return {WPElement} Element to render.
  */
 
-const ALLOWED_BLOCKS = ["core/heading", "core/button", "core/paragraph"];
+const ALLOWED_BLOCKS = [ 'core/heading', 'core/button', 'core/paragraph' ];
 
 const MY_TEMPLATE = [
 	[
-		"core/heading",
-		{ className: "cta-header", placeholder: "Enter Heading..." },
+		'core/heading',
+		{ className: 'cta-header', placeholder: 'Enter Heading...' },
 	],
 	[
-		"core/paragraph",
-		{ className: "cta-body", placeholder: "Enter Body Content..." },
+		'core/paragraph',
+		{ className: 'cta-body', placeholder: 'Enter Body Content...' },
 	],
-	["core/button", {}],
+	[ 'core/button', {} ],
 ];
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const { backgroundColor } = attributes;
 	// Custom Functions
 
-	function onBackgroundColorChange(newColor) {
-		setAttributes({ backgroundColor: newColor });
+	function onBackgroundColorChange( newColor ) {
+		setAttributes( { backgroundColor: newColor } );
 	}
 
-	const onChangeAlignment = (newAlignment) => {
-		setAttributes({
-			alignment: newAlignment === undefined ? "none" : newAlignment,
-		});
+	const onChangeAlignment = ( newAlignment ) => {
+		setAttributes( {
+			alignment: newAlignment === undefined ? 'none' : newAlignment,
+		} );
 	};
 
 	return (
-		<section {...useBlockProps()}>
+		<section { ...useBlockProps() }>
 			{
-				<InspectorControls style={{ marginBottom: "40px" }}>
-					<PanelBody title={"Background Options"}>
+				<InspectorControls style={ { marginBottom: '40px' } }>
+					<PanelBody title={ 'Background Options' }>
 						<div
-							style={{
-								marginTop: "20px",
-								marginBottom: "40px",
-							}}
+							style={ {
+								marginTop: '20px',
+								marginBottom: '40px',
+							} }
 						>
 							<p>
 								<strong>Background Color:</strong>
 								<ColorPalette
-									value={backgroundColor}
-									onChange={onBackgroundColorChange}
+									value={ backgroundColor }
+									onChange={ onBackgroundColorChange }
 								/>
 							</p>
 						</div>
@@ -92,16 +92,22 @@ export default function Edit({ attributes, setAttributes }) {
 			}
 			<div
 				className="yohdev-cta"
-				style={{ backgroundColor: `${backgroundColor}` }}
+				style={ { backgroundColor: `${ backgroundColor }` } }
 			>
 				<BlockControls>
 					<AlignmentToolbar
-						value={attributes.alignment}
-						onChange={onChangeAlignment}
+						value={ attributes.alignment }
+						onChange={ onChangeAlignment }
 					/>
 				</BlockControls>
-				<div className="container" style={{ textAlign: attributes.alignment }}>
-					<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={MY_TEMPLATE} />
+				<div
+					className="container"
+					style={ { textAlign: attributes.alignment } }
+				>
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						template={ MY_TEMPLATE }
+					/>
 				</div>
 			</div>
 		</section>

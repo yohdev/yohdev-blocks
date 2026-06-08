@@ -11,7 +11,16 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, RichText, InspectorControls, ColorPalette, MediaUpload, InnerBlocks, BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+	ColorPalette,
+	MediaUpload,
+	InnerBlocks,
+	BlockControls,
+	AlignmentToolbar,
+} from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
